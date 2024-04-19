@@ -32,6 +32,6 @@ while True:
             continue
 
     play_again: str = input("Do you want to play again?, Yes/No ")
-    list_yes = ["yes", "y",]
+    list_yes = ["yes", "y"]
     if play_again.lower() not in list_yes:
         break
