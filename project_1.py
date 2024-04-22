@@ -1,4 +1,4 @@
-#### collect contents from website and store it in database
+# collect contents from website and store it in database
 
 import requests
 from bs4 import BeautifulSoup
@@ -23,10 +23,9 @@ response = requests.get(url)
 soup = BeautifulSoup(response.content, 'html.parser')
 
 # finding location
-name = soup.find_all("a", class_ = "business-name")
-contact = soup.find_all("div", class_ ="phones phone primary")
-address = soup.find_all("div", class_ ="adr")
-
+name = soup.find_all("h2", class_ = "n")
+contact = soup.find_all("div", class_ = "phones phone primary")
+address = soup.find_all("div", class_ = "adr")
 
 for names, contacts, address_s in zip(name, contact, address):
     name_text = names.text.strip()
@@ -35,12 +34,11 @@ for names, contacts, address_s in zip(name, contact, address):
 
     print(name_text, contact_text, address_text)
 
- # insert data in database
+    # insert data in database
     conn.execute("INSERT INTO res_data VALUES(?, ?, ?)", (name_text, contact_text, address_text))
 
     # commit changes
     conn.commit()
-
 
 # close connection
 conn.close()
