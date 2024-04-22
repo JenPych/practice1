@@ -10,7 +10,7 @@ while True:
 
     if user_call == "quit":
         print("See you!")
-        break
+        quit()
 
     elif user_call in outcomes:
 
@@ -22,6 +22,7 @@ while True:
              (user_call == "scissors" and computer_call == "paper"):
             print(f"Computer calls {computer_call}")
             print("You win!")
+
             user_win += 1
 
         else:
